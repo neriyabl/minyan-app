@@ -6,16 +6,12 @@ import {
   ThemeProvider,
   Container,
   Drawer,
-  Typography,
-  Card,
-  CardActionArea,
-  CardContent,
-  Grid,
 } from "@material-ui/core";
 import { deepPurple } from "@material-ui/core/colors";
 
 import Header from "./components/Header";
 import Bottom from "./components/Bottom";
+import Prayer from "./components/Prayer";
 import { prayers } from "./mocks";
 
 const theme = createMuiTheme({
@@ -34,14 +30,6 @@ const useStyles = makeStyles({
     padding: "10px",
     paddingTop: "60px",
     backgroundColor: "#ccc",
-  },
-  text: {
-    marginTop: 5,
-    paddingRight: 10,
-  },
-  textLeft: {
-    marginTop: 5,
-    textAlign: "end",
   },
 });
 
@@ -66,35 +54,9 @@ function App() {
       <div className="App">
         <Header onOpenDrawer={toggleDrawer(true)} />
         <Container className={classes.appMain}>
-          <div className="priers">
-            {prayers.map((pr) => (
-              <Card
-                key={pr._id}
-                style={{ margin: 10 }}
-                onClick={() => console.log(pr)}
-              >
-                <CardActionArea>
-                  <CardContent>
-                    <Grid container justify="space-between">
-                      <Grid item xs={5}>
-                        <Typography variant="h5">{pr.name}</Typography>
-                      </Grid>
-                      <Grid item xs={2}>
-                        <Typography className={classes.text}>
-                          {pr.time}
-                        </Typography>
-                      </Grid>
-                      <Grid item xs={5}>
-                        <Typography className={classes.textLeft}>
-                          {pr.address.substring(0, pr.address.indexOf(","))}
-                        </Typography>
-                      </Grid>
-                    </Grid>
-                  </CardContent>
-                </CardActionArea>
-              </Card>
-            ))}
-          </div>
+          {prayers.map((prayer) => (
+            <Prayer prayer={prayer} />
+          ))}
         </Container>
         <Bottom
           value={page}
