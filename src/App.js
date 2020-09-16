@@ -6,8 +6,14 @@ import {
   ThemeProvider,
   Container,
   Drawer,
+  List,
+  ListItem,
+  Typography,
+  ListItemIcon,
 } from "@material-ui/core";
 import { deepPurple } from "@material-ui/core/colors";
+
+import AddIcon from "@material-ui/icons/Add";
 
 import Header from "./components/Header";
 import Bottom from "./components/Bottom";
@@ -33,10 +39,13 @@ const useStyles = makeStyles({
   },
 });
 
+const pages = ["מניינים", "פרופיל", "יציאה"];
+
 function App() {
   const classes = useStyles();
   const [page, setPage] = useState(0);
   const [drawer, setDrawer] = useState(false);
+  const [drawerPage, setDrawerPage] = useState(0);
 
   const toggleDrawer = (open) => (event) => {
     if (
@@ -52,10 +61,10 @@ function App() {
   return (
     <ThemeProvider theme={theme}>
       <div className="App">
-        <Header onOpenDrawer={toggleDrawer(true)} />
+        <Header onOpenDrawer={toggleDrawer(true)} title={pages[drawerPage]} />
         <Container className={classes.appMain}>
           {prayers.map((prayer) => (
-            <Prayer prayer={prayer} />
+            <Prayer prayer={prayer} key={prayer._id} />
           ))}
         </Container>
         <Bottom
@@ -65,7 +74,23 @@ function App() {
           }}
         />
         <Drawer anchor="left" open={drawer} onClose={toggleDrawer(false)}>
-          <span>sdfds</span>
+          <List component="nav">
+            {pages.map((page, i) => (
+              <ListItem
+                button
+                key={page}
+                onClick={() => {
+                  setDrawerPage(i);
+                  toggleDrawer(false)({});
+                }}
+              >
+                <ListItemIcon>
+                  <AddIcon />
+                </ListItemIcon>
+                <Typography variant="h6">{page}</Typography>
+              </ListItem>
+            ))}
+          </List>
         </Drawer>
       </div>
       <CssBaseline />

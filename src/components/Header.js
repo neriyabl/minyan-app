@@ -18,7 +18,7 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-export default function Header({ onOpenDrawer }) {
+export default function Header({ onOpenDrawer, title }) {
   const classes = useStyles();
   return (
     <AppBar position="fixed">
@@ -33,7 +33,7 @@ export default function Header({ onOpenDrawer }) {
           <MenuIcon />
         </IconButton>
         <Typography variant="h4" className={classes.title}>
-          תפילות
+          {title}
         </Typography>
       </Toolbar>
     </AppBar>

@@ -27,7 +27,7 @@ export default function Bottom({ value, onChange }) {
       className={classes.bottomNavigation}
     >
       <BottomNavigationAction label="אחרונים" icon={<RestoreIcon />} />
-      <BottomNavigationAction label="מועדפעם" icon={<FavoriteIcon />} />
+      <BottomNavigationAction label="מועדפים" icon={<FavoriteIcon />} />
       <BottomNavigationAction label="קרוב" icon={<LocationOnIcon />} />
     </BottomNavigation>
   );
