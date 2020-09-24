@@ -1,8 +1,9 @@
 import React, { useState } from "react";
+// TODO update theme dependancy
 import {
   makeStyles,
   CssBaseline,
-  createMuiTheme,
+  unstable_createMuiStrictModeTheme as createMuiTheme,
   ThemeProvider,
   Container,
   Drawer,
@@ -87,7 +88,7 @@ function App() {
                 <ListItemIcon>
                   <AddIcon />
                 </ListItemIcon>
-                <Typography variant="h6">{page}</Typography>
+                <Typography>{page}</Typography>
               </ListItem>
             ))}
           </List>

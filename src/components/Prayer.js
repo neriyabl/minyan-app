@@ -13,9 +13,15 @@ const useStyles = makeStyles({
     marginTop: 5,
     paddingRight: 10,
   },
-  textLeft: {
+  textCenter: {
     marginTop: 5,
-    textAlign: "end",
+    textAlign: "center",
+    alignContent: "center",
+  },
+  prayerType: {
+    backgroundColor: "green",
+    color: "#fff",
+    borderRadius: "5px",
   },
 });
 
@@ -30,15 +36,15 @@ export default function Prayer({ prayer }) {
       <CardActionArea>
         <CardContent>
           <Grid container justify="space-between">
-            <Grid item xs={5}>
+            <Grid item>
               <Typography variant="h5">{prayer.name}</Typography>
             </Grid>
             <Grid item xs={2}>
               <Typography className={classes.text}>{prayer.time}</Typography>
             </Grid>
-            <Grid item xs={5}>
-              <Typography className={classes.textLeft}>
-                {prayer.address.substring(0, prayer.address.indexOf(","))}
+            <Grid item xs={3} className={classes.prayerType}>
+              <Typography className={classes.textCenter}>
+                {prayer.type}
               </Typography>
             </Grid>
           </Grid>
