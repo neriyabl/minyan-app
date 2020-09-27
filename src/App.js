@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import { BrowserRouter as Router, Route, Switch, Link } from "react-router-dom";
 // TODO update theme dependancy
 import {
   makeStyles,
@@ -61,43 +62,51 @@ function App() {
   };
 
   return (
-    <ThemeProvider theme={theme}>
-      <div className="App">
-        <Header onOpenDrawer={toggleDrawer(true)} title={pages[drawerPage]} />
-        <Container className={classes.appMain}>
-          {/* {prayers.map((prayer) => (
-            <Prayer prayer={prayer} key={prayer._id} />
-          ))} */}
-          <SimpleMap />
-        </Container>
-        <Bottom
-          value={page}
-          onChange={(_event, newValue) => {
-            setPage(newValue);
-          }}
-        />
-        <Drawer anchor="left" open={drawer} onClose={toggleDrawer(false)}>
-          <List component="nav">
-            {pages.map((page, i) => (
-              <ListItem
-                button
-                key={page}
-                onClick={() => {
-                  setDrawerPage(i);
-                  toggleDrawer(false)({});
-                }}
-              >
-                <ListItemIcon>
-                  <AddIcon />
-                </ListItemIcon>
-                <Typography>{page}</Typography>
-              </ListItem>
-            ))}
-          </List>
-        </Drawer>
-      </div>
-      <CssBaseline />
-    </ThemeProvider>
+    <Router>
+      <ThemeProvider theme={theme}>
+        <div className="App">
+          <Header onOpenDrawer={toggleDrawer(true)} title={pages[drawerPage]} />
+          <Container className={classes.appMain}>
+            <Switch>
+              <Route path="list">
+                {prayers.map((prayer) => (
+                  <Prayer prayer={prayer} key={prayer._id} />
+                ))}
+              </Route>
+              <Route path="/">
+                <SimpleMap />
+              </Route>
+            </Switch>
+          </Container>
+          <Bottom
+            value={page}
+            onChange={(_event, newValue) => {
+              setPage(newValue);
+            }}
+          />
+          <Drawer anchor="left" open={drawer} onClose={toggleDrawer(false)}>
+            <List component="nav">
+              {pages.map((page, i) => (
+                <ListItem
+                  button
+                  key={page}
+                  onClick={() => {
+                    setDrawerPage(i);
+                    toggleDrawer(false)({});
+                  }}
+                >
+                  <ListItemIcon>
+                    <AddIcon />
+                  </ListItemIcon>
+                  <Typography>{page}</Typography>
+                </ListItem>
+              ))}
+            </List>
+          </Drawer>
+        </div>
+        <CssBaseline />
+      </ThemeProvider>
+    </Router>
   );
 }
 

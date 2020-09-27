@@ -7,6 +7,7 @@ import {
 import RestoreIcon from "@material-ui/icons/Restore";
 import FavoriteIcon from "@material-ui/icons/Favorite";
 import LocationOnIcon from "@material-ui/icons/LocationOn";
+import { Link } from "react-router-dom";
 
 const useStyles = makeStyles({
   bottomNavigation: {
@@ -26,9 +27,15 @@ export default function Bottom({ value, onChange }) {
       showLabels
       className={classes.bottomNavigation}
     >
-      <BottomNavigationAction label="אחרונים" icon={<RestoreIcon />} />
-      <BottomNavigationAction label="מועדפים" icon={<FavoriteIcon />} />
-      <BottomNavigationAction label="קרוב" icon={<LocationOnIcon />} />
+      <Link to="/">
+        <BottomNavigationAction label="קרוב" icon={<LocationOnIcon />} />
+      </Link>
+      <Link to="/list">
+        <BottomNavigationAction label="מועדפים" icon={<FavoriteIcon />} />
+      </Link>
+      <Link to="/last">
+        <BottomNavigationAction label="אחרונים" icon={<RestoreIcon />} />
+      </Link>
     </BottomNavigation>
   );
 }
