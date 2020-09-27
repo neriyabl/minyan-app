@@ -20,6 +20,7 @@ import Header from "./components/Header";
 import Bottom from "./components/Bottom";
 import Prayer from "./components/Prayer";
 import { prayers } from "./mocks";
+import SimpleMap from "./components/SimpleMap";
 
 const theme = createMuiTheme({
   palette: {
@@ -64,9 +65,10 @@ function App() {
       <div className="App">
         <Header onOpenDrawer={toggleDrawer(true)} title={pages[drawerPage]} />
         <Container className={classes.appMain}>
-          {prayers.map((prayer) => (
+          {/* {prayers.map((prayer) => (
             <Prayer prayer={prayer} key={prayer._id} />
-          ))}
+          ))} */}
+          <SimpleMap />
         </Container>
         <Bottom
           value={page}

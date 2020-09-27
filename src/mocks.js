@@ -7,7 +7,7 @@ const types = {
 export const prayers = [
   {
     _id: 1,
-    type: types.shachrit,
+    type: types.mincha,
     name: "משפחת כהן",
     location: { lat: 1, long: 1 },
     address: "מעלה מכמש, סלעית 1",
