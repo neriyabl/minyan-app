@@ -13,7 +13,7 @@ const StyledTooltip = withStyles({
 const AnyReactComponent = () => {
   return (
     <div>
-      <StyledTooltip arrow open={true} placement="top" title="המיקום שלך" marg>
+      <StyledTooltip arrow open={true} placement="top" title="המיקום שלך">
         <RadioButtonCheckedIcon color="primary" />
       </StyledTooltip>
     </div>
