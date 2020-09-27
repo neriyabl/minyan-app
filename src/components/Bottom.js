@@ -27,15 +27,24 @@ export default function Bottom({ value, onChange }) {
       showLabels
       className={classes.bottomNavigation}
     >
-      <Link to="/">
-        <BottomNavigationAction label="קרוב" icon={<LocationOnIcon />} />
-      </Link>
-      <Link to="/list">
-        <BottomNavigationAction label="מועדפים" icon={<FavoriteIcon />} />
-      </Link>
-      <Link to="/last">
-        <BottomNavigationAction label="אחרונים" icon={<RestoreIcon />} />
-      </Link>
+      <BottomNavigationAction
+        label="קרוב"
+        icon={<LocationOnIcon />}
+        component={Link}
+        to="/"
+      />
+      <BottomNavigationAction
+        label="מועדפים"
+        icon={<FavoriteIcon />}
+        component={Link}
+        to="/list"
+      />
+      <BottomNavigationAction
+        label="אחרונים"
+        icon={<RestoreIcon />}
+        component={Link}
+        to="/list"
+      />
     </BottomNavigation>
   );
 }

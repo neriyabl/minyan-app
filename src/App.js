@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { BrowserRouter as Router, Route, Switch, Link } from "react-router-dom";
+import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 // TODO update theme dependancy
 import {
   makeStyles,
@@ -68,12 +68,12 @@ function App() {
           <Header onOpenDrawer={toggleDrawer(true)} title={pages[drawerPage]} />
           <Container className={classes.appMain}>
             <Switch>
-              <Route path="list">
+              <Route path="/list">
                 {prayers.map((prayer) => (
                   <Prayer prayer={prayer} key={prayer._id} />
                 ))}
               </Route>
-              <Route path="/">
+              <Route exact path="/">
                 <SimpleMap />
               </Route>
             </Switch>
