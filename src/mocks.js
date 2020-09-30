@@ -1,6 +1,6 @@
 const types = {
   shachrit: "שחרית",
-  mincha: "מינחה",
+  mincha: "מנחה",
   arvit: "ערבית",
 };
 
